@@ -6,6 +6,11 @@
   <p>da stimmt etwas nicht ganz...</p>
 }
 
+@if(busy()) {
+  <p>getting geo location</p>
+  <mat-spinner></mat-spinner>
+}
+
 <p>{{currentLocation().name}} - {{currentLocation().solution}}</p>
 
 @if(!done()) {

@@ -8,6 +8,7 @@ import {MatChip} from '@angular/material/chips';
 import {MatIcon} from '@angular/material/icon';
 import {map} from 'rxjs';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {MatProgressSpinner} from '@angular/material/progress-spinner';
 
 export const WINDOW = new InjectionToken<Window>(
   'Window global object',
@@ -34,6 +35,7 @@ export const NAVIGATOR = new InjectionToken<Navigator>(
     MatButton,
     DecimalPipe,
     FormsModule,
+    MatProgressSpinner,
   ],
   templateUrl: './main.html',
   styleUrl: './main.css',
@@ -73,11 +75,17 @@ export class Main {
         this.router.navigate(['/'+locations[next].id])
       }
     });
+
+    effect(() => {
+      this.busy.set(this.position() == undefined)
+    });
   }
 
-
+  busy = signal(false)
 
   public thereYet() {
+  this.busy.set(true)
+  this.position.set(undefined)
    this.navigator.geolocation.getCurrentPosition(
       success => this.position.set(success.coords),
       error => console.log(error),
