@@ -38,5 +38,5 @@ jobs:
       - name: deploy
         uses: actions/deploy-pages@v4.0.5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.TOKEN }}
           artifact_name: production-files
