@@ -9,6 +9,9 @@ import {MatIcon} from '@angular/material/icon';
 import {map} from 'rxjs';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
+import {MatProgressBar} from '@angular/material/progress-bar';
+import {MatDivider} from '@angular/material/list';
+import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 
 export const WINDOW = new InjectionToken<Window>(
   'Window global object',
@@ -35,7 +38,10 @@ export const NAVIGATOR = new InjectionToken<Navigator>(
     MatButton,
     DecimalPipe,
     FormsModule,
-    MatProgressSpinner,
+    MatProgressBar,
+    MatLabel,
+    MatFormField,
+    MatInput,
   ],
   templateUrl: './main.html',
   styleUrl: './main.css',
@@ -55,6 +61,7 @@ export class Main {
   guess = model('')
   position = signal<Position|undefined>(undefined)
   done = signal(false)
+  skipped = signal(5)
 
   //solutions
   distanceToTarget = computed(() => this.position() == undefined || this.currentLocation().position == undefined ? undefined : metersAway(this.position()!, this.currentLocation().position!))
@@ -63,16 +70,21 @@ export class Main {
   success = computed(() => (this.currentLocation().position == undefined || this.distanceToTarget()! < 50) && (this.solutionForPuzzle() == undefined || this.guess() === this.solutionForPuzzle()))
 
 
+  advance() {
+    const next = locations.findIndex(it => it.id === this.currentLocation()?.id)+1
+    if (next >= locations.length) {
+      return
+    }
+    this.skipped.set(5)
+    this.done.set(next === locations.length-1)
+    this.guess.set('')
+    this.router.navigate(['/'+locations[next].id])
+  }
+
   constructor() {
     effect(() => {
       if (this.success()) {
-        const next = locations.findIndex(it => it.id === this.currentLocation()?.id)+1
-        if (next >= locations.length) {
-          return
-        }
-        this.done.set(next === locations.length-1)
-        this.guess.set('')
-        this.router.navigate(['/'+locations[next].id])
+       this.advance()
       }
     });
   }
@@ -91,5 +103,15 @@ export class Main {
       {
         enableHighAccuracy: true,
       })
+  }
+
+
+
+  public skip() {
+    this.skipped.set(this.skipped() - 1)
+    if (this.skipped() <= 0) {
+     this.advance()
+    }
+
   }
 }

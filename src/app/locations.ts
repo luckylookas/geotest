@@ -3,6 +3,7 @@ export interface Location {
   position?: Position;
   id: string;
   solution?: string;
+  paragraphs: string[];
 }
 
 export interface Position {
@@ -17,32 +18,38 @@ export const locations: Location[] = [
       latitude: 48.28121320422785,
       longitude: 16.456317145898865
     },
+    paragraphs: ['geh zur ecke iselgasse/lafnitzgasse'],
     id: 'start'
   },
   {
-    name: 'lafnitzgasse ecke moellplatz',
+    name: 'lafnitzgasse ecke gerlosplatz',
     id: 'station1',
     position: {
-      latitude: 48.27973738159596,
-      longitude: 16.45738696813583
-    }
+      latitude: 48.281408326540266,
+      longitude: 16.457866619826348
+    },
+    paragraphs: ['geh zur ecke lafnitzgasse/gerlosplatz']
   },
   {
-    name: 'moellplatz puzzle',
+    name: 'puzzle',
     solution: '1234',
     id: 'station2',
+    paragraphs: ['gib 1234 ein']
   },
   {
-    name: 'billa',
+    name: 'retour',
     position: {
-      latitude: 48.28215777743105,
-      longitude: 16.449952853991498
+      latitude: 48.279573349700684,
+      longitude: 16.457547405366004
     },
-    id: 'station3'
+    id: 'station3',
+    paragraphs: ['geh ueber die ispergasse retour']
   },
   {
     name: 'finale',
-    id: 'finale'
+    id: 'finale',
+    paragraphs: ['super!', 'du hast gewonnen.']
+
   }
 
 ];

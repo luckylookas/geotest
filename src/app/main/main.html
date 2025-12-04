@@ -1,43 +1,58 @@
-@if(currentLocation().position && distanceToTarget() != undefined) {
-  <p>noch {{ distanceToTarget() | number: '1.0-0' }} m</p>
-}
+<div id="container">
 
-@if(currentLocation().solution && guess() !== currentLocation().solution) {
-  <p>da stimmt etwas nicht ganz...</p>
-}
 
-@if(busy()) {
-  <p>getting geo location</p>
-  <mat-spinner></mat-spinner>
-}
+    <h1>{{ currentLocation().name }}</h1>
 
-<p>{{currentLocation().name}} - {{currentLocation().solution}}</p>
-
-@if(!done()) {
-  <button matButton="elevated" (click)="thereYet()">Bin ich schon da?</button>
-}
-
-@switch (currentLocation().id) {
-  @case ('finale') {
-    <div>ja super, fertig samma!</div>
-  }
-  @case ('station3') {
-
-    <div>geh zum billa</div>
-  }
-  @case ('station2') {
-
-    <div>gib 1234 ein</div>
-  }
-  @case ('station1') {
-    <div>
-      geh die lafnitzgasse rauf zum moellplatz
+    <div id="text">
+        @for(paragraph of currentLocation().paragraphs; track $index) {
+          <p>{{paragraph}}</p>
+        }
     </div>
-  }
-  @default {
-    <div>
-      geh zur ecke iselgasse & lafnitzgasse
-    </div>
+
+</div>
+
+
+
+<div id="cheat">
+
+
+
+
+  <div id="info">
+
+    @if (busy()) {
+      <p>getting geo location</p>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    }
+
+    @if (currentLocation().position && distanceToTarget() != undefined) {
+      <p>noch {{ distanceToTarget() | number: '1.0-0' }} m</p>
+    }
+
+    @if (currentLocation().solution && guess() !== currentLocation().solution && guess()) {
+      <p>da stimmt etwas nicht ganz...</p>
+    }
+  </div>
+
+  <div id="buttons">
+
+
+    @if (currentLocation().solution) {
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Guess</mat-label>
+          <input matInput placeholder="guess" [(ngModel)]="guess">
+        </mat-form-field>
+
+    }
+
+  @if (!done() && currentLocation().position && !busy()) {
+    <button matButton="elevated" (click)="thereYet()">Bin ich schon da?</button>
   }
 
-}
+
+  @if (!done()) {
+    <button matButton="elevated" (click)="skip()">skip ({{ skipped() }})</button>
+  }
+  </div>
+</div>
