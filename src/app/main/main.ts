@@ -75,10 +75,6 @@ export class Main {
         this.router.navigate(['/'+locations[next].id])
       }
     });
-
-    effect(() => {
-      this.busy.set(this.position() == undefined)
-    });
   }
 
   busy = signal(false)
@@ -87,7 +83,10 @@ export class Main {
   this.busy.set(true)
   this.position.set(undefined)
    this.navigator.geolocation.getCurrentPosition(
-      success => this.position.set(success.coords),
+      success => {
+        this.position.set(success.coords)
+      this.busy.set(false)
+      },
       error => console.log(error),
       {
         enableHighAccuracy: true,
