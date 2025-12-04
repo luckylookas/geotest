@@ -1,3 +1,38 @@
-<p>{{position().latitude}}, {{position().longitude}}</p>
+@if(currentLocation().position && distanceToTarget() != undefined) {
+  <p>noch {{ distanceToTarget() | number: '1.0-0' }} m</p>
+}
 
-<p>{{success()}}</p>
+@if(currentLocation().solution && guess() !== currentLocation().solution) {
+  <p>da stimmt etwas nicht ganz...</p>
+}
+
+<p>{{currentLocation().name}} - {{currentLocation().solution}}</p>
+
+@if(!done()) {
+  <button matButton="elevated" (click)="thereYet()">Bin ich schon da?</button>
+}
+
+@switch (currentLocation().id) {
+  @case ('finale') {
+    <div>ja super, fertig samma!</div>
+  }
+  @case ('station3') {
+
+    <div>geh zum billa</div>
+  }
+  @case ('station2') {
+
+    <div>gib 1234 ein</div>
+  }
+  @case ('station1') {
+    <div>
+      geh die lafnitzgasse rauf zum moellplatz
+    </div>
+  }
+  @default {
+    <div>
+      geh zur ecke iselgasse & lafnitzgasse
+    </div>
+  }
+
+}
