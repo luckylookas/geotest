@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  height: 100%;
+  height: calc(100% + 100pt);
   gap: 10pt;
 }
 
@@ -16,6 +16,7 @@ h1 {
 #text {
   width: 100%;
   text-align: start;
+  overflow-wrap: anywhere;
 }
 
 #info {
@@ -23,13 +24,16 @@ width: 100%;
   text-align: center;
 }
 
-#text {
-
+button {
+  width: 80%;
 }
 
 #buttons {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   gap: 10pt;
 }
 
@@ -37,9 +41,11 @@ width: 100%;
   position: fixed;
   display: flex;
   flex-direction: column;
-  bottom:20pt;
+  bottom:0;
   width: 100%;
+  padding: 10pt 0;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(2px);
+  background-color: #ffffff11;
 }

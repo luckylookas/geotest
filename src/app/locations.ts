@@ -89,7 +89,7 @@ export const locations: Location[] = [
   },
   {
     name: 'Hunger',
-    id: '222',
+    id: 'g02855d99hub50l35bad274540dfc8bf',
     position: {
       latitude: 48.1954187026802,
       longitude: 16.366976926984005
@@ -113,7 +113,7 @@ export const locations: Location[] = [
   //{noch ein raetsel...}
   {
     name: 'Der Auftrag',
-    id: '444',
+    id: '2028sd3fgd99ybb534uiob274540dfc8kg',
     position: {
       latitude: 48.21061466967007,
       longitude: 16.37470521598213
@@ -133,7 +133,7 @@ export const locations: Location[] = [
   },
   {
     name: 'Bei Gerard van Swieten',
-    id: '2222',
+    id: '8890sd98v98sd8934nnv894908hvndfg',
     position: {
       latitude: 48.18965209658004,
       longitude: 16.414155250266678
@@ -157,7 +157,7 @@ export const locations: Location[] = [
   },
   {
     name: 'Ein Entkommen',
-    id: '5555',
+    id: 'f39c9cmn230nmcn38988dvcjn34n9nncv9',
     position: {
       latitude: 48.20227065199294,
       longitude:  16.39230540974233
@@ -166,23 +166,24 @@ export const locations: Location[] = [
       'Ha!',
       'Ihr Narren.',
       'Ihr seid direkt in alle meine Fallen getappt!',
-      'Ich bin garnicht Dagobert, ich bin Claude, euer Erzfeind!',
+      'Ich bin garnicht Dagobert, ich bin es, CLAUDE, euer Erzfeind!',
       'Jaha ich sehe das Entsetzen auf euren Gesichtern. Wie kann es sein, dass dieser gewiefte Boesewicht, der uns schon so oft begegnet ist und an den wir uns immer erinnern werden, auch hinter dieser Falle steckt!?',
       '',
       'Oh ja! Ich bin wie eine Spinne und ihr zappelt in meinem Netz!',
       'Eine vom Narrativ lange angelegte und aufgebaute Spinne die zurecht am Hoehepunkt der Spannung auftritt!',
       '',
-      'Und wie bei jedem guten, boesen, Plan steckt hinter den Orten an die ich euch geleitet habe ein Hinweis!',
+      'Und wie bei jedem guten, boesen, Plan steckt hinter den Fallen in die ich euch geleitet habe ein Hinweis!',
       'Ein Zeichen dass auf den Ort hinweist, an dem ich Dagobert gefangen halte!',
       'Welches Zeichen? So leicht lasse ich mir nicht auf die Karte zeichen.',
+      '',
       '',
       'In die Karten schauen!',
       'Ach verdammt.'
     ]
   },
   {
-    name: 'Trichtersaufen',
-    id: '666',
+    name: 'CLAUDE!',
+    id: '78923bn2345c297234fccwed234sdfgfv',
     paragraphs: [
       'Ihr habt mein Raetsel also loesen koennen!?',
       'Damit seit ihr erneut in meine Falle getappt.',
@@ -195,24 +196,77 @@ export const locations: Location[] = [
       '',
       'Und nur mein Name, den ihr bestimmt wisst und an den ich und ihr euch sicher erinnern koennt, oeffnet das Kryptex!',
       'Das Kryptex, der zentrale Gegenstand um den es in dieser ganzen Geschichte ging, den ihr die ganze Zeit dabei hattet!',
-      '',
-      'Ihr habt es nicht?',
-      '',
-      'Jaha! Weil ich es gestohlen und hier her gebracht habe! Fragt doch mal drinnen nach!'
     ],
-    solution: 'auf dem zettel im kryptex'
+    solution: 'ponyschlecken'
   },
   {
-    name: 'Claude',
-    id: '890',
+    name: 'Claude?',
+    id: 'asdfbn9pt7345nvp79w4bn0gn78werv',
     paragraphs: [
       'Wahnsinn!',
-      'Ihr habt`s geschafft!',
-      'Ich hoffe es hat alles funktioniert und ihr hattet Spass!',
-      ''
+      'Ihr habt es geschafft!',
+      'Ihr habt es geschafft in meine fieseste Falle zu tappen!',
+      'AHAHAHAHA',
+      'Es gibt keinen Weg weiter zu kommen',
+      '',
+      'KEINEN!',
+      '',
+      'Ihr seid hier fuer immer gefangen!',
+      'AHAHAHAHAHAHAHAHAHAHAHAHAHAHA'.repeat(100),
     ],
+  },
+  {
+    name: 'AHAHAHAHAHA',
+    id: '9247835y9234hcnm2397h0fbn283ndsaf',
+    paragraphs: [
+      'AHAHAHAHAHAHAHAHAHAHAHAHAHAHA'.repeat(100),
+    ],
+  },
+  {
+    name: '*Keuch*',
+    id: 'df345trvr3fr43453asdf23423f4c23kltg',
+    paragraphs: [
+      'Ha...ufff',
+      '',
+      'Ihr seid ja immernoch da.',
+      'Ich werd langsam heiser. Es war nie gedacht, dass ich solange in der Geschichte vorkomme.',
+      'Und ihr habt bestimmt noch nicht einmal bemerkt, wie ich euch mit dem Kryptex heimlich erneut gedemuetigt habe!',
+      '',
+      'Ha, "Herr Doktor Jeremiah Boehring", Sie Schlumpf!',
+      'Als Sie die Loesung eingestellt haben, haben sie sich selbst das Schlimmste angetan, dass ihnen jemals jemand antun konnte!',
+      '',
+      'Ich meine, abgesehen von den Anschlaegen auf ihr Leben.',
+      'Und als da ihre Kollegin erschossen wurde.',
+      'Ah, und die Suspendierung.',
+      'Und als ihr Freund ausgeraubt wurde.',
+      'Die Messerstecherei.',
+      'Das mit der Wohnung...',
+      '',
+      'Ja, nein.',
+      'Aber trotzdem unter den schlimmsten 7 Dingen die ihnen jemals angetan wurden!',
+      'Ah, das mit ihren Eltern und...',
+      'Unter den schlimmsten zehn bis zwanzing Dingen die Ihnen jemals angetan wurden!',
+      '',
+      'Und um zu beweisen, dass Sie meine ultimative Demuetigung gesehen haben, sagen Sie mir doch das, was nach der Demuetigung kommt!'
+    ],
+    solution: 'QI',
+  },
+  {
+    name: 'Immernoch da?',
+    id: '102381902jdj123dnc12012l3kbyercx4',
+    paragraphs: [
+      'HA!',
+      '',
+      'Wie, ihr seid immernoch da?',
+      'Nach all meinen Fallen und Demuetigungen?',
+      '',
+      'Sind wir durch unsere ewige Feindschaft irgendwie zusammengewachsen?',
+      '',
+      'Also ich geb zu, ohne euch wuerde mir schon etwas fehlen im Leben.',
+      '',
+      'Was sagt ihr, lassen wir das fuer heute und ich lad euch einfach zum Essen ein?',
+    ]
   }
-
 ]
 
 

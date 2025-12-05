@@ -1,4 +1,15 @@
-import {Component, computed, DOCUMENT, effect, inject, InjectionToken, model, signal} from '@angular/core';
+import {
+  Component,
+  computed,
+  DOCUMENT,
+  effect,
+  inject,
+  InjectionToken,
+  model,
+  Resource,
+  resource, ResourceRef,
+  signal
+} from '@angular/core';
 import {locations, metersAway, Location, Position} from '../locations';
 import {MatButton} from '@angular/material/button';
 import {DecimalPipe} from '@angular/common';
@@ -56,18 +67,31 @@ export class Main {
     map(it =>  locations.find(c => c.id === it) ?? locations[0])
   ), {initialValue: locations[0]})
 
-
-  // inputs for solutions
   guess = model('')
-  position = signal<Position|undefined>(undefined)
-  done = signal(false)
-  skipped = signal(5)
+  skipped = signal(4)
+  done = computed(() => locations.findIndex(it => it.id === this.currentLocation().id) === locations.length-1)
 
   //solutions
-  distanceToTarget = computed(() => this.position() == undefined || this.currentLocation().position == undefined ? undefined : metersAway(this.position()!, this.currentLocation().position!))
+  distanceToTarget = computed(() => this.position.value() == undefined || this.currentLocation().position == undefined ? undefined : metersAway(this.position.value()!, this.currentLocation().position!))
   solutionForPuzzle = computed(() => this.currentLocation().solution)
 
   success = computed(() => (this.currentLocation().position == undefined || this.distanceToTarget()! < 50) && (this.solutionForPuzzle() == undefined || this.guess() === this.solutionForPuzzle()))
+
+  readonly skippedText = [
+    'einfach weiter bitte',
+    'wirklich?',
+    'wirklich wirklich?',
+    'ohne schummeln?',
+    'versprochen?'
+  ].reverse()
+
+  readonly noWay = [
+    'keinen!',
+    'wirklich!',
+    'nein, wirklich wirklich!',
+    'lass das!',
+    'bitte?'
+  ].reverse()
 
 
   advance() {
@@ -75,11 +99,14 @@ export class Main {
     if (next >= locations.length) {
       return
     }
-    this.skipped.set(5)
-    this.done.set(next === locations.length-1)
+
+    this.skipped.set(4)
+
+    this.position.set(undefined)
     this.guess.set('')
     this.router.navigate(['/'+locations[next].id])
   }
+
 
   constructor() {
     effect(() => {
@@ -87,29 +114,47 @@ export class Main {
        this.advance()
       }
     });
+
+    effect(() => {
+      if (this.busy()) {
+        this.position.reload()
+      }
+    });
+
+    effect(() => {
+      this.currentLocation()
+      window.scrollTo(0, 0);
+    });
   }
 
   busy = signal(false)
 
-  public thereYet() {
-  this.busy.set(true)
-  this.position.set(undefined)
-   this.navigator.geolocation.getCurrentPosition(
-      success => {
-        this.position.set(success.coords)
-      this.busy.set(false)
-      },
-      error => console.log(error),
-      {
-        enableHighAccuracy: true,
+  position: ResourceRef<Position|undefined> = resource({
+    params: () => ({}),
+    defaultValue: undefined,
+    loader: () =>
+      !this.busy() ? Promise.resolve(undefined) :
+      new Promise((ok, fail) => {
+        this.navigator.geolocation.getCurrentPosition(
+          success => {
+            ok(success.coords)
+            this.busy.set(false)
+          },
+          fail,
+          {
+            enableHighAccuracy: true,
+          })
       })
+
+  })
+
+  public thereYet() {
+    this.busy.set(true)
   }
-
-
 
   public skip() {
     this.skipped.set(this.skipped() - 1)
-    if (this.skipped() <= 0) {
+    if (this.skipped() < 0) {
      this.advance()
     }
 
