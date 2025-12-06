@@ -1,21 +1,18 @@
 <div id="container">
 
 
-    <h1>{{ currentLocation().name }}</h1>
+  <h1>{{ currentLocation().name }}</h1>
 
-    <div id="text">
-        @for(paragraph of currentLocation().paragraphs; track $index) {
-          <p>{{paragraph}}</p>
-        }
-    </div>
+  <div id="text">
+    @for (paragraph of currentLocation().paragraphs; track $index) {
+      <p>{{ paragraph }}</p>
+    }
+  </div>
 
 </div>
 
 
-
 <div id="cheat">
-
-
 
 
   <div id="info">
@@ -36,24 +33,22 @@
 
   <div id="buttons">
 
-
     @if (currentLocation().solution) {
 
-        <mat-form-field class="example-full-width">
-          <mat-label>Guess</mat-label>
-          <input matInput placeholder="guess" [(ngModel)]="guess">
-        </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Guess</mat-label>
+        <input matInput placeholder="guess" [(ngModel)]="guess">
+      </mat-form-field>
 
     }
 
-  @if (!done() && currentLocation().position && !busy()) {
-    <button matButton="elevated" (click)="thereYet()">Bin ich schon da?</button>
-  }
+    @if (!done() && currentLocation().position && !busy()) {
+      <button matButton="elevated" (click)="thereYet()">Bin ich schon da?</button>
+    }
 
 
-  @if (!done()) {
-    <button matButton="elevated" (click)="skip()">skip ({{ skipped() }})</button>
-    ({{nextLocation().id}})
-  }
+    @if (!done()) {
+        <button matButton="elevated" (click)="skip()">{{ skipText()[skipped()] }}</button>
+    }
   </div>
 </div>
