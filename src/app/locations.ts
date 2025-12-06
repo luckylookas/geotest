@@ -63,7 +63,7 @@ export interface Position {
 export const locations: Location[] = [
   {
     name: "Am Anfang",
-    id: "ea2b2676c28c0db26d39331a336c6b92",
+    id: "start",
     position: {
       latitude: 48.22488081787097,
       longitude: 16.497051648696154
@@ -81,7 +81,7 @@ export const locations: Location[] = [
     ],
     next: [
       {
-        player: '*',
+        player: 'any',
         nextId: 'b098bad9908b50885bad274880dbc8bc',
       }
     ]
@@ -100,7 +100,7 @@ export const locations: Location[] = [
     solution: '04.07',
     next: [
       {
-        player: '*',
+        player: 'any',
         nextId: '222',
       }
     ]
@@ -110,7 +110,7 @@ export const locations: Location[] = [
     id: '222',
     next: [
       {
-        player: '*',
+        player: 'any',
         nextId: '444',
       }
     ],
@@ -140,7 +140,7 @@ export const locations: Location[] = [
     id: '444',
     next: [
       {
-        player: '*',
+        player: 'any',
         nextId: '234f23r234rff3edwf346j67',
       }
     ],
@@ -166,7 +166,7 @@ export const locations: Location[] = [
     id: '234f23r234rff3edwf346j67',
     next: [
       {
-        player: '*',
+        player: 'any',
         nextId: '01k29j112msms925435129912f1023',
       }
     ],
@@ -196,7 +196,7 @@ export const locations: Location[] = [
     id: '01k29j112msms925435129912f1023',
     next: [
       {
-        player: '*',
+        player: 'any',
         nextId: '0812hj0nd123nf453b34yvb1o3yg34rvb1i4fb',
       }
     ],
@@ -227,8 +227,12 @@ export const locations: Location[] = [
     id: '0812hj0nd123nf453b34yvb1o3yg34rvb1i4fb',
     next: [
       {
-        player: '*',
+        player: 'lukas',
         nextId: '890',
+      },
+      {
+        player: 'paul',
+        nextId: '123123123',
       }
     ],
     paragraphs: [
@@ -251,14 +255,20 @@ export const locations: Location[] = [
     solution: 'auf dem zettel im kryptex'
   },
   {
-    name: 'Claude',
-    id: '890',
-    next: [
-      {
-        player: '*',
-        nextId: '',
-      }
+    name: 'Ende Paul',
+    id: '123123123',
+    next: [],
+    paragraphs: [
+      'Wahnsinn!',
+      'Ihr habt`s geschafft!',
+      'Ich hoffe es hat alles funktioniert und ihr hattet Spass!',
+      ''
     ],
+  },
+  {
+    name: 'Ende Lukas',
+    id: '890',
+    next: [],
     paragraphs: [
       'Wahnsinn!',
       'Ihr habt`s geschafft!',

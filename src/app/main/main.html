@@ -53,6 +53,7 @@
 
   @if (!done()) {
     <button matButton="elevated" (click)="skip()">skip ({{ skipped() }})</button>
+    ({{nextLocation().id}})
   }
   </div>
 </div>

@@ -10,7 +10,6 @@ import {map} from 'rxjs';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
 import {MatProgressBar} from '@angular/material/progress-bar';
-import {MatDivider} from '@angular/material/list';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 
 export const WINDOW = new InjectionToken<Window>(
@@ -56,11 +55,26 @@ export class Main {
     map(it =>  locations.find(c => c.id === it) ?? locations[0])
   ), {initialValue: locations[0]})
 
+  player = toSignal(this.route.paramMap.pipe(
+    map(it => it.get('player') ?? 'any')), {initialValue: 'any'});
+
+
+  nextLocation = computed(() => {
+    const nextId =
+
+    locations.find(it => it.id === this.currentLocation().id)?.next.find(n => n.player === this.player())?.nextId
+    ?? locations.find(it => it.id === this.currentLocation().id)?.next.find(n => n.player === 'any')?.nextId
+    ?? locations[0].id
+
+    return locations.find(it => it.id === nextId) ?? locations[0];
+
+  });
+
 
   // inputs for solutions
   guess = model('')
   position = signal<Position|undefined>(undefined)
-  done = signal(false)
+  done = computed(() => !this.currentLocation().next.length)
   skipped = signal(5)
 
   //solutions
@@ -71,14 +85,12 @@ export class Main {
 
 
   advance() {
-    const next = locations.findIndex(it => it.id === this.currentLocation()?.id)+1
-    if (next >= locations.length) {
+    if (this.done()){
       return
     }
     this.skipped.set(5)
-    this.done.set(next === locations.length-1)
     this.guess.set('')
-    this.router.navigate(['/'+locations[next].id])
+    this.router.navigate(['/' + this.player()  + '/' + this.nextLocation().id])
   }
 
   constructor() {
