@@ -175,8 +175,8 @@ export class Main {
   }
 
   openSnackBar(message: string) {
-    this.snackBar.open(message, "ok...", {
-      duration: 5000,
+    this.snackBar.open(message, "ok", {
+      duration: 15000,
     });
   }
 }
