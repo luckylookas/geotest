@@ -58,13 +58,15 @@
       }
 
       <div style="display: flex; gap: 10pt;">
-        <button matButton="elevated" (click)="moreHints()">
-          @if (currentHintIndex() + 1 >= currentLocation().hints.length) {
-            Loesung
-          } @else {
-            Hilfe
-          }
-        </button>
+        @if(!currentLocation().id.includes('nohint')) {
+          <button matButton="elevated" (click)="moreHints()">
+            @if (currentHintIndex() + 1 >= currentLocation().hints.length) {
+              Loesung
+            } @else {
+              Hilfe
+            }
+          </button>
+        }
         @if (!done()) {
 
 

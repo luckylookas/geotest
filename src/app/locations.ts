@@ -20,24 +20,156 @@ export interface Position {
 }
 
 
-/*
 
-puzzle ideen:
-
-'beim HAHAHA eine station: 'hier geht es nur fuer mich weiter!
- --> jemand muss auf den player 'paul' wechseln.
-
- dort erfaehrt man den link wo es fuer jeden spieler weitergeht.
-
- --> es gibt einen link fuer jeden von ihnen (branching path)
-
- --> es gibt ein raetsel wo die beide an 2 verschiedenen Orten sein muessen (aber nah bei einander)
- --> dannach wieder gemeinsam.
-
-
- */
 
 export const locations: Location[] = [
+  {
+    name: "Was passiert hier?",
+    id: 'tutorial_nohint1',
+    hints: [
+      'Nach dem letzten Hinweis, bekommt ihr die Loesung.'
+    ],
+    paragraphs: [
+      'Willkommen zur Ueberbleibselweihnachsraetselsause!',
+      '',
+      'Ich hab eine kleine Raetselrally durch Wien mit einer Aufregenden und durchdachten Story fuer euch gebastelt.',
+      'Als ich es abgefahren bin, hab ich 3 Stunden gebraucht, da ist auch ein bisschen Zeit fuers Nachdenken eingerechnet - aber warscheinlich viel zu wenig.',
+      '',
+      'Und so funktioniert das ganze:',
+      '',
+      'Gleich zuerst, wenn etwas nicht funktioniert, habt ihr unten immer den "ueberspringen" button, den ihr zwei Mal durecken muesst, damit ihr nicht unabsichtlich schummelt.',
+      'Probiert den jetzt einmal.'
+    ],
+    next: [
+      {
+        player: 'any',
+        nextId: 'tutorial_nohint2',
+      }
+    ]
+  },
+  {
+    name: "Ausserdem",
+    id: 'tutorial_nohint2',
+    hints: [
+      'Nach dem letzten Hinweis, bekommt ihr die Loesung.'
+    ],
+    skipText: [
+      'was Anderes'
+    ],
+    paragraphs: [
+      'Manchmal steht auf dem Knopf etwas Anderes, oder mehrmals druecken ist nicht noetig.',
+      'Er tut aber immer das Gleiche.'
+    ],
+    next: [
+      {
+        player: 'any',
+        nextId: 'tutorial3',
+      }
+    ]
+  },
+  {
+    name: "Ausserdem",
+    id: 'tutorial3',
+    hints: [
+      'So bekommt ihr eine unterschiedliche Anzahl an Hinweisen',
+      'Nach dem letzten Hinweis, bekommt ihr die Loesung.',
+      'Hier muesst ihr einfach "weiter" druecken.',
+    ],
+    skipText: ['weiter'],
+    paragraphs: [
+      'Wenn ihr nicht weiterkommt, aber denkt, dass das Spiel eigentlich funktioniert, koennt ihr auch Hilfe bekommen.',
+      'Jedes Mal wenn ihr den Knopf druecken, bekommt ihr einen neuen Hinweis',
+      'Der letzte Hinweis ist immer die Loesung.'
+    ],
+    next: [
+      {
+        player: 'any',
+        nextId: 'tutorial4',
+      }
+    ]
+  },
+  {
+    name: "Raetsel",
+    id: 'tutorial4',
+    hints: [
+      'Was denn, es steht doch da was du tun sollst.',
+      'Gibt "die richtige loesung" ein',
+    ],
+    paragraphs: [
+      'Wenn ihr aber nicht zufrieden damit seid, 5 Minuten nur "ueberspringen" zu durecken, hab ich auch ein paar Raetsel eingebaut!',
+      'Wenn es unten eine Moeglichkeit gibt, etwas einzugeben, dann springt das Spiel sofort weiter, wenn ihr die richtige Loesung eingegeben habt.',
+      'Ihr muesst nicht Enter oder Weiter oder so druecken.',
+      '',
+      'WICHTIG:',
+      'Weil ich faul bin und eine englishe Tastatur hab, gibt es keine Umlaute und alle Loesungen in deisem Spiel werden immer klein geschrieben.'
+
+    ],
+    solution: 'die richtige loesung',
+    next: [
+      {
+        player: 'any',
+        nextId: 'tutorial5',
+      }
+    ]
+  },
+  {
+    name: "Mehr Raetsel",
+    id: 'tutorial5',
+    hints: [
+      'Was denn, es steht doch da was du tun sollst.',
+      'Gibt "die richtige loesung" ein',
+    ],
+    skipText: [
+      'weiter'
+    ],
+    paragraphs: [
+      'Zuerst mal, keine Panik. Das Spiel schickt euren Standort nie irgendwo hin, alles passiert nur auf eurem Handy.',
+      'Ihr koenntet sobald ihr diese Seite offen habt sogar das Internet abdrehen.',
+      'Ausserdem fragt das Spiel den Standort nur einmalig ab, wenn ihr den Knopf drueckt.',
+      '',
+      'Wo das gesagt ist - fuer einige Raetsel muesst ihr einen Ort in Wien finden.',
+      'Dafuer knobelt ihr aus, wo ihr denkt, dass ihr hinmuesst. Dann fahrt ihr dahin und drueckt "bin ich schon da?"',
+      '',
+      'Wenn ihr 50 Meter an das Ziel herankommt, geht das Spiel weiter.',
+      'Davor sagt euch der Knopf wie weit ihr vom Ziel entfernt seid.',
+      '',
+      'Ihr koennt den Knopf so oft druecken wie ihr wollt um zu checken ob ihr dem Ziel wirklich naeher kommt.',
+      'In dem Beispiel ist das Ziel der Stephansdom - da ihr da jetzt nicht hinfahren werdet, benutzt einfach mal "weiter".'
+    ],
+    position: {
+      latitude: 48.2050491798,
+      longitude: 16.3701485194,
+    },
+    next: [
+      {
+        player: 'any',
+        nextId: 'tutorial_nohint6',
+      }
+    ]
+  },
+  {
+    name: "So.",
+    id: 'tutorial_nohint6',
+    hints: [
+      'Was denn, es steht doch da was du tun sollst.',
+      'Gibt "die richtige loesung" ein',
+    ],
+    skipText: [
+      'los gehts!'
+    ],
+    paragraphs: [
+      'Gibt es vielleicht noch andere Raetsel? Wer weiss.',
+      '',
+      'Wenn ihr etwas nicht versteht oder etwas ueberhaupt nicht funktionieren sollte, muesst ihr mich anrufen!',
+      'Und jetzt hoff ich ihr habt Spass!'
+    ],
+    next: [
+      {
+        player: 'any',
+        nextId: 'start',
+      }
+    ]
+  },
   {
     name: "Am Anfang",
     id: "start",
