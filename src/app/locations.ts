@@ -608,7 +608,7 @@ export const locations: Location[] = [
     next: [
       {
         player: 'any',
-        nextId: 'Motto_am_Fluss',
+        nextId: 'schluss',
       }
     ],
     hints: [
@@ -634,23 +634,19 @@ export const locations: Location[] = [
     next: [
     ],
     hints: [
-      'Woher weiss das Spiel denn wo ihr gerade hinmuesst oder seid?',
-      'Schau mal da wo auch steht wer du gerade bist.',
-      'Ich hab einen Tisch im Motto am Fluss reserviert.'
+      'Das wars.'
     ],
-    id: 'Motto_am_Fluss',
+    id: 'schluss',
     paragraphs: [
       'Und so endet unsere Geschichte.',
       'Da wo alle guten Geschichten enden, an ihrem Ende.',
       '',
       'Ich hoffe es hat alles funktioniert und ihr hattet Spass.',
+      'Ich hätte ja mitgespielt, aber das Spiel funktioniert für mich irgendwie nicht!',
       '',
-      'Nach dem ganzen herumgerenne hat ihr bestimmt Hunger, oder Durst, oder euch ist kalt oder heiss!',
+      'Je nach dem wann ihr spielt, könnt ihr euch ja melden, dann können wir noch wo Essen gehen oder so!',
       '',
-      'Ich hab mich solange einmal an einen Tisch hier gesetzt und warte auf euch.',
-      'Wenn ihr rechtzeitig heir seid, seid ich eingeladen!',
-      'Wo ist hier?',
-      'Na ein Raetsel muss schon noch sein.'
+      'Sagt auf jeden Fall bescheid, dass ihr fertig seid, damit ich das Spiel wieder löschen kann.'
     ]
   },
 ]
